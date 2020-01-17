@@ -7,18 +7,25 @@
     <title>HW 6</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css"> 
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
     <h1>Weather Dashboard</h1>
-    <div class="card">
-        <div class="card-body">
-             (MM/DD/YY)  
-            <button id="submitWeather">Weather</button>
-            <textarea id="city"></textarea>
-            <p id="testCity"></p>
+    <div class="container">
+        <div class="row">
+          <div id= "leftCol" class="col-sm-5">
+            <h4>Search for a City:</h4>
+            <textarea id="citySearch"></textarea>
+            <button id="button">Submit</button>
+            <div id="cityList"></div>
         </div>
-    </div>
+
+        <div id= "rightCol" class="col-sm-7">
+            <h2 id="cityName"></h2>         
+            <div id="currentCity"></div>   
+        </div>
+
 
       <script src="./script.js"></script>
 </body>

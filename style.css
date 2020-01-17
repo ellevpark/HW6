@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+}
+#leftCol{
+    float: left;
+}
+#rightCol{
+    float: left;
+}
+#citySearch {
+    height: 35px;
+}
+#button {
+}
