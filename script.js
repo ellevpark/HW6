@@ -48,31 +48,35 @@ $.ajax({
     $('#cityName').text(response.name + " ("+ moment().subtract(10, 'days').calendar() + ")" )  
 
     console.log (response)
-    var temp = $("<p>").text("Temperature: " + response.main.temp + "˚F");
-    var humidity = $("<p>").text("Humidity: " + response.main.humidity);
+    var temp= response.main.temp
+    var humidity= response.main.humidity
+    $("<p>").text("Temperature: " + temp + "˚F");
+    $("<p>").text("Humidity: " + humidity);
     var speed = $("<p>").text("Speed: " + response.wind.speed + " MPH");
     $("#currentCity").append(temp, humidity, speed); 
 
 // Have a 5-Day Forecast showing date, current weather status, Temperature, and Humidity
-
-
+var lon = response.coord.lon;
+var lat = response.coord.lat;
 
 $.ajax({
-    url: "api.openweathermap.org/data/2.5/forecast?" + city + "&units=imperial" + "&APPID=93a011811ca9f461f8bf87ca0588f418", 
+    url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&APPID=93a011811ca9f461f8bf87ca0588f418", 
     method: "GET",
-    }
-    )
+    })
     .then(function(response){
 
-        console.log (response)
+    var indexToCheck = [6, 14, 22, 30, 38];
+    for(var i = 0; i < indexToCheck.length; i++){
+        
+      var fiveDay = response.main.indexToCheck[i];
+      console.log (fiveDay[0])
+        $("<p>").append(temp + "˚F");
+        $("<p>").append(humidity);
+        $("<p>").append(temp, humidity); 
+        $("#fiveDay").append(temp, humidity); 
+    
+         }
+     });
     });
-    for (var i=0; i< 5; i++){
-}
-// Have a list of cities that generates based upon user search engine 
-
-    });
-}
-
-console.log([].length)
-
+ }
 });
