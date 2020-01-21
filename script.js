@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var searchedCities = ["London", "Barcelona"];
+var searchedCities = ["London", "Barcelona", "Paris", "Tokyo", "Seoul", "Sydney", "California", "New York"];
 // create a search bar that will take city that user inputs 
 //TODO:  get item JSON.stringify JSON.parse
 //TODO: localstorage.setItemJSON.stringify("searchedCities", "city")
@@ -59,9 +59,23 @@ function search(city){
     var lat = response.coord.lat;
 
 $.ajax({
+    url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&cnt={5}" + "&APPID=93a011811ca9f461f8bf87ca0588f418",
+    method: "GET", 
+ })
+
+ .then(function(response){
+    console.log(response)
+    var uv= $("<p>").text("UV Index: " + response.value).addClass("card-text");
+    $("#currentCity").append(uv);
+
+ })
+
+ 
+$.ajax({
     url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&APPID=93a011811ca9f461f8bf87ca0588f418", 
     method: "GET",
     })
+
     .then(function(response){
 
     $(".card-group").empty();    
@@ -76,7 +90,7 @@ $.ajax({
     // $("#fiveDay").append(temp, humidity); 
     var date = moment(fiveDay.dt_txt)
     console.log(date.format('MMMM Do YYYY, h:mm'))
-    var fiveDate = $("<h5>").addClass("card-title").append(date.format('MMMM Do YYYY, h:mm a'))
+    var fiveDate = $("<h5>").addClass("card-title").append(date.format('MMMM Do YYYY'))
 
     var cardBody = $("<div>").addClass("card-body");
     var card = $("<div>").addClass("card text-white bg-primary mb-3");
