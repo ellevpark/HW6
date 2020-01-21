@@ -59,7 +59,7 @@ function search(city){
     var lat = response.coord.lat;
 
 $.ajax({
-    url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&APPID=93a011811ca9f461f8bf87ca0588f418", 
+    url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&APPID=93a011811ca9f461f8bf87ca0588f418", 
     method: "GET",
     })
     .then(function(response){
